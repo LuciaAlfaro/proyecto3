@@ -22,3 +22,9 @@ Route::get('encuentro', function () {
 Route::get('contact', function () {
     return view('contact');
 });
+Route::get('thingsicando', function() {
+    return view('thingsicando');
+});
+Route::get('accomplishments', function() {
+    return view('accomplishments');
+});
