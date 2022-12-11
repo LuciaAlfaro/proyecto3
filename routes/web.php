@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/* Route::get('/', function () {
     return view('welcome');
 });
 Route::get('encuentro', function () {
@@ -33,4 +33,28 @@ Route::get('thingsicando', function() {
 });
 Route::get('accomplishments', function() {
     return view('accomplishments');
+}); */
+
+Route::get('/', function () {
+    return 'Esta es la página principal';
+});
+
+Route::get('login', function () {
+    return 'Login usuario';
+});
+
+Route::get('logout', function () {
+    return 'Logout usuario';
+});
+
+Route::get('productos/show/{id}', function ($id) {
+    return 'Vista detalle producto ' . $id;
+});
+
+Route::get('productos/create', function () {
+    return 'Añadir producto';
+});
+
+Route::get('productos/edit/{id}', function ($id) {
+    return 'Modificar producto ' . $id;
 });
