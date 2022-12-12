@@ -36,25 +36,25 @@ Route::get('accomplishments', function() {
 }); */
 
 Route::get('/', function () {
-    return 'Esta es la página principal';
+    return view('home');
 });
 
 Route::get('login', function () {
-    return 'Login usuario';
+    return view('auth.login');
 });
 
-Route::get('logout', function () {
-    return 'Logout usuario';
+Route::get('productos', function () {
+    return view('productos.index');
 });
 
 Route::get('productos/show/{id}', function ($id) {
-    return 'Vista detalle producto ' . $id;
+    return view('productos.show', ['id' => $id]);
 });
 
 Route::get('productos/create', function () {
-    return 'Añadir producto';
+    return view('productos.create');
 });
 
 Route::get('productos/edit/{id}', function ($id) {
-    return 'Modificar producto ' . $id;
+    return view('productos.edit', ['id' => $id]);
 });
