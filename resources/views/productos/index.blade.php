@@ -1,4 +1,18 @@
 @extends('layouts.master')
 @section('content')
-    <h1>Pantalla index</h1>
+<div class="row">
+
+    @foreach( $arrayBicis as $key => $id )
+    <div class="col-xs-6 col-sm-4 col-md-3 text-center">
+
+        <a href="{{ url('/productos/show/' . $id ) }}">
+            <h4 style="min-height:45px;margin:5px 0 10px 0">
+                {{$id['descripcion']}}
+            </h4>
+        </a>
+
+    </div>
+    @endforeach
+
+</div>
 @stop
