@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CatalogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,26 +37,16 @@ Route::get('accomplishments', function() {
     return view('accomplishments');
 }); */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/',  [HomeController::class, 'getHome']);
 
 Route::get('login', function () {
     return view('auth.login');
 });
 
-Route::get('productos', function () {
-    return view('productos.index');
-});
+Route::get('productos', [CatalogController::class, 'getIndex']);
 
-Route::get('productos/show/{id}', function ($id) {
-    return view('productos.show', ['id' => $id]);
-});
+Route::get('productos/show/{id}',  [CatalogController::class, 'getShow']);
 
-Route::get('productos/create', function () {
-    return view('productos.create');
-});
+Route::get('productos/create', [CatalogController::class, 'getCreate']);
 
-Route::get('productos/edit/{id}', function ($id) {
-    return view('productos.edit', ['id' => $id]);
-});
+Route::get('productos/edit/{id}', [CatalogController::class, 'getEdit']);

@@ -14,7 +14,7 @@ class CatalogController extends Controller
 
     public function getShow($id)
     {
-        return view('productos.show', array('id'=>self::$arrayBicis[$id], 'id'=>$id));
+        return view('productos.show', array('bici'=>self::$arrayBicis[$id], 'id'=>$id));
     }
 
     public function getCreate()
@@ -24,7 +24,7 @@ class CatalogController extends Controller
 
     public function getEdit($id)
     {
-        return view('productos.edit', array('id'=>$id, self::$arrayBicis[$id]));
+        return view('productos.edit', array('bici'=>self::$arrayBicis[$id], 'id'=>$id));
     }
 
     private static $arrayBicis = array(
@@ -51,7 +51,7 @@ class CatalogController extends Controller
             'ocupada' => false,
             'descripcion' => 'patinete',
             'imagen' => 'https://cocheselectricosninos.com/1219/patinete-electrico-citycoco-gold-60v-ataa-cars.jpg'
-        ),
+        )
         );
 
 
