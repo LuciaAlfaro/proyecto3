@@ -50,3 +50,5 @@ Route::get('productos/show/{id}',  [CatalogController::class, 'getShow']);
 Route::get('productos/create', [CatalogController::class, 'getCreate']);
 
 Route::get('productos/edit/{id}', [CatalogController::class, 'getEdit']);
+
+Route::post('productos/create', [CatalogController::class, 'store']);
