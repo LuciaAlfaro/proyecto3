@@ -13,7 +13,7 @@ class CreateVehiclesTable extends Migration
      */
     public function up()
     {
-        Schema::create('vehicles', function (Blueprint $table) {
+        Schema::create('vehiculos', function (Blueprint $table) {
             $table->id();
             $table->string('tipo');
             $table->boolean('disponible');
@@ -23,8 +23,6 @@ class CreateVehiclesTable extends Migration
             $table->string('desc_rotura');
             $table->date('ult_reparacion');
             $table->timestamps();
-
-            $table->foreign('tipo')->references('id')->on('vehicles_type');
         });
     }
 
@@ -35,6 +33,6 @@ class CreateVehiclesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vehicles');
+        Schema::dropIfExists('vehiculos');
     }
 }

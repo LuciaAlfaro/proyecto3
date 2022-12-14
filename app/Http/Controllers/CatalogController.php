@@ -2,18 +2,22 @@
 
 namespace App\Http\Controllers;
 //use App\Models\Movie;
+
+use App\Models\Vehiculo;
 use Illuminate\Http\Request;
 
 class CatalogController extends Controller
 {
     public function getIndex()
     {
-        $bicis = self::$arrayBicis;
+/*         $bicis = self::$arrayBicis; */
+        $bicis = Vehiculo::all();
     return view('productos.index', array('arrayBicis'=>$bicis));
     }
 
     public function getShow($id)
     {
+        //HAY QUE VINCULAR CON LA BASE DE DATOS findOrFail()
         return view('productos.show', array('bici'=>self::$arrayBicis[$id], 'id'=>$id));
     }
 
@@ -24,7 +28,20 @@ class CatalogController extends Controller
 
     public function getEdit($id)
     {
+        //HAY QUE VINCULAR CON LA BASE DE DATOS
         return view('productos.edit', array('bici'=>self::$arrayBicis[$id], 'id'=>$id));
+    }
+
+    public function store(Request $request)
+    {
+        $registroNuevo = new Vehiculo();
+        $registroNuevo-> tipo =$request->input('tipo');
+        $registroNuevo-> descripcion =$request->input('descripcion');
+        $registroNuevo-> imagen =$request->input('imagen');
+        $registroNuevo->save();
+
+        $url = action([CatalogController::class, 'getShow' ], ['id' => $registroNuevo->id]);
+        return redirect($url);
     }
 
     private static $arrayBicis = array(
@@ -50,6 +67,12 @@ class CatalogController extends Controller
             'tipo' => '1',
             'ocupada' => false,
             'descripcion' => 'patinete',
+            'imagen' => 'https://cocheselectricosninos.com/1219/patinete-electrico-citycoco-gold-60v-ataa-cars.jpg'
+        ),
+        array(
+            'tipo' => '3',
+            'ocupada' => false,
+            'descripcion' => 'un pedazo de triciclo',
             'imagen' => 'https://cocheselectricosninos.com/1219/patinete-electrico-citycoco-gold-60v-ataa-cars.jpg'
         )
         );
