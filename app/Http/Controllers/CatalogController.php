@@ -17,8 +17,8 @@ class CatalogController extends Controller
 
     public function getShow($id)
     {
-        //HAY QUE VINCULAR CON LA BASE DE DATOS findOrFail()
-        return view('productos.show', array('bici'=>self::$arrayBicis[$id], 'id'=>$id));
+        $bici = Vehiculo::findOrFail($id);
+        return view('productos.show', array('bici'=>$bici, 'id'=>$id));
     }
 
     public function getCreate()
@@ -28,8 +28,8 @@ class CatalogController extends Controller
 
     public function getEdit($id)
     {
-        //HAY QUE VINCULAR CON LA BASE DE DATOS
-        return view('productos.edit', array('bici'=>self::$arrayBicis[$id], 'id'=>$id));
+        $bici = Vehiculo::findOrFail($id);
+        return view('productos.edit', array('bici'=>$bici, 'id'=>$id));
     }
 
     public function store(Request $request)

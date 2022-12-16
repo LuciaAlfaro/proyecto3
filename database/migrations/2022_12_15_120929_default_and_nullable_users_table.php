@@ -27,8 +27,10 @@ class DefaultAndNullableUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('phone')->nullable()->change();
-            $table->float('saldo')->default(0)->change();
+            $table->dropColumn('phone');
+            $table->dropColumn('saldo');
         });
     }
 }
+/*$table->string('phone')->nullable()->change();
+            $table->float('saldo')->default(0)->change();*/

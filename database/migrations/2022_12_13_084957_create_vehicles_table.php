@@ -21,7 +21,7 @@ class CreateVehiclesTable extends Migration
             $table->string('imagen');
             $table->boolean('roto');
             $table->string('desc_rotura');
-            $table->date('ult_reparacion');
+            $table->string('ult_reparacion');
             $table->timestamps();
         });
     }
