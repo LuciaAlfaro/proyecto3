@@ -20,7 +20,7 @@ class DefaultAndNullablesVehiculosTable extends Migration
             $table->string('imagen')->nullable()->change();
             $table->boolean('roto')->default(false)->change();
             $table->string('desc_rotura')->nullable()->change();
-            $table->date('ult_reparacion')->nullable()->change();
+            $table->string('ult_reparacion')->nullable()->change();
         });
     }
 
@@ -32,13 +32,20 @@ class DefaultAndNullablesVehiculosTable extends Migration
     public function down()
     {
         Schema::table('vehiculos', function (Blueprint $table) {
-            $table->string('tipo')->default('0')->change();
+            $table->dropColumn('tipo');
+            $table->dropColumn('disponible');
+            $table->dropColumn('descripcion');
+            $table->dropColumn('imagen');
+            $table->dropColumn('roto');
+            $table->dropColumn('desc_rotura');
+            $table->dropColumn('ult_reparacion');
+        });
+    }
+}
+/*$table->string('tipo')->default('0')->change();
             $table->boolean('disponible')->default(true)->change();
             $table->string('descripcion')->default('Tremendo ciclo')->change();
             $table->string('imagen')->nullable()->change();
             $table->boolean('roto')->default(false)->change();
             $table->string('desc_rotura')->nullable()->change();
-            $table->date('ult_reparacion')->nullable()->change();
-        });
-    }
-}
+            $table->date('ult_reparacion')->nullable()->change();*/
