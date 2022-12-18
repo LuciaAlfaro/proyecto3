@@ -44,6 +44,17 @@ class CatalogController extends Controller
         return redirect($url);
     }
 
+    public function putStore($id, Request $request){
+        $bici = Vehiculo::findOrFail($id);
+        $bici->tipo = $request->input('tipo');
+        $bici-> descripcion =$request->input('descripcion');
+        $bici-> imagen =$request->input('imagen');
+        $bici->save();
+
+        $url = action([CatalogController::class, 'getShow' ], ['id' => $bici->id]);
+        return redirect($url);
+    }
+
     private static $arrayBicis = array(
         array(
             'tipo' => '0',

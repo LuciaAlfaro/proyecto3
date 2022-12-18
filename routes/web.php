@@ -43,6 +43,8 @@ Route::get('productos/edit/{id}', [CatalogController::class, 'getEdit']); */
 
 Route::post('productos/create', [CatalogController::class, 'store']);
 
+Route::put('productos/edit/{id}', [CatalogController::class, 'putStore']);
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
