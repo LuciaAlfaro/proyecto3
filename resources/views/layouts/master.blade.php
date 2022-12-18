@@ -14,7 +14,7 @@
 	<body class="is-preload">
 
 		<!-- Header -->
-        @include('partials.menu');
+        @include('partials.menu')
 
 		<!-- Wrapper -->
 			<div id="wrapper">
