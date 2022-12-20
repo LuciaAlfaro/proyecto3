@@ -3,15 +3,15 @@
             <header>
                 <span class="image avatar"><img src="/images/avatar.jpg" alt="" /></span>
                 <h1 id="logo"><a href="#">Bik bik bike</a></h1>
-                <p>I got reprogrammed by a rogue AI<br />
-                and now I'm totally cray</p>
+                <p>Movilidad sostenible<br />
+                al alcance de tu mano</p>
             </header>
             <nav id="nav">
                 <ul>
-                    <li><a href="/about" class="active">About</a></li>
-                    <li><a href="/thingsicando">Things I Can Do</a></li>
-                    <li><a href="/accomplishments">A Few Accomplishments</a></li>
-                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/login" class="active">Login</a></li>
+                    <li><a href="/register">Regístrate</a></li>
+                    <li><a href="/productos">Catálogo</a></li>
+                    <li><a href="/dashboard">Panel de Usuario</a></li>
                 </ul>
             </nav>
             <footer>
