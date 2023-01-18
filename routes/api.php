@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Psr\Http\Message\ServerRequestInterface;
 use Tqdev\PhpCrudApi\Api;
 use Tqdev\PhpCrudApi\Config\Config;
+use App\Http\Controllers\API\CustomerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,8 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::apiResource('customers', CustomerController::class);
+
 Route::any('/{any}', function (ServerRequestInterface $request) {
     $config = new Config([
         'address' => env('DB_HOST', '127.0.0.1'),
@@ -33,9 +36,14 @@ Route::any('/{any}', function (ServerRequestInterface $request) {
     $response = $api->handle($request);
 /*     //RESTED
     return $response;
- */
+*/
     //REACT-ADMIN
-    $records = json_decode($response->getBody()->getContents())->records;
-     return response()->json($records, 200, $headers = ['X-Total-Count' => count($records)]);
+    try {
+        $records = json_decode($response->getBody()->getContents())->records;
+        $response = response()->json($records, 200, $headers = ['X-Total-Count' => count($records)]);
+    } catch (\Throwable $th) {
+
+    }
+    return $response;
     //
 })->where('any', '.*');
