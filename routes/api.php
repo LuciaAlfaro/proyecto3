@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\API\CustomerController;
 use App\Http\Controllers\API\UserController;
+use App\Http\Controllers\API\StationController;
 
 use Psr\Http\Message\ServerRequestInterface;
 use Tqdev\PhpCrudApi\Api;
@@ -27,6 +28,7 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 
 Route::apiResource('customers', CustomerController::class);
 Route::apiResource('users', UserController::class);
+Route::get('stations', [StationController::class, 'index']);
 
 Route::any('/{any}', function (ServerRequestInterface $request) {
     $config = new Config([
