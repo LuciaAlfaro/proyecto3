@@ -14,9 +14,21 @@ class CustomerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return CustomerResource::collection(Customer::paginate());
+        $busqueda = $request->input('filter');
+        $pagina = $request->input('page');
+        $numeroElementos = $pagina['size'];
+        $numPagina = $pagina['number'];
+        $request->merge(array('page' => $numPagina));
+
+        if ($request->input('filter') && array_key_exists('q', $busqueda)){
+            $registrosCustomer = Customer::where('first_name', 'like', $busqueda['q'] . '%')
+            ->paginate($numeroElementos);
+        } else {
+            $registrosCustomer = Customer::paginate($numeroElementos);
+        }
+        return CustomerResource::collection($registrosCustomer);
     }
 
     /**
