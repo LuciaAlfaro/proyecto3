@@ -9,7 +9,8 @@ class StationResource extends JsonResource
     const KEYS = array(
         'id' => 'number',
         'name' => 'name',
-        'direction' => 'address'
+        'direction' => 'address',
+        'available_bikes' => 'available_bikes'
         );
     /**
      * Transform the resource into an array.
