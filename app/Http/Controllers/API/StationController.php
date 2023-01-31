@@ -15,7 +15,7 @@ class StationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         // Inicialmente, vamos a utilizar una estacion constante
         $contract = 'santander';
