@@ -14,9 +14,17 @@ class VehiculoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return VehiculoResource::collection(Vehiculo::paginate());
+        $busqueda = $request->input('filter');
+        $numElementos = $request->input('numElements');
+        $registrosVehiculos =
+            ($busqueda && array_key_exists('q', $busqueda))
+            ? Vehiculo::where('descripcion', 'like', '%' .$busqueda['q'] . '%')
+                ->paginate($numElementos)
+            : Vehiculo::paginate($numElementos);
+
+            return VehiculoResource::collection($registrosVehiculos);
     }
 
     /**
