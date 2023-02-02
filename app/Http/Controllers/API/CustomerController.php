@@ -9,6 +9,15 @@ use App\Http\Resources\CustomerResource;
 
 class CustomerController extends Controller
 {
+        /**
+     * Create the controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->authorizeResource(Customer::class, 'customer');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -35,6 +44,7 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
+
         $customer = json_decode($request->getContent(), true);
         $customerData = $customer['data']['attributes'];
         $customerData['user_id'] = $customerData['userId'];
@@ -65,6 +75,7 @@ class CustomerController extends Controller
      */
     public function update(Request $request, Customer $customer)
     {
+
         $customerData = json_decode($request->getContent(), true);
         $customer->update($customerData['data']['attributes']);
 
