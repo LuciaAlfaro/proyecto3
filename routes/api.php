@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\API\CustomerController;
+use App\Http\Controllers\API\OrderController;
 use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\API\VehiculoController;
 use App\Http\Controllers\API\StationController;
@@ -33,6 +34,7 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 Route::apiResource('customers', CustomerController::class)->middleware('auth:sanctum');
 Route::apiResource('users', UserController::class);
 Route::apiResource('vehiculos', VehiculoController::class);
+Route::apiResource('orders', OrderController::class)->middleware('auth:sanctum');
 Route::get('stations', [StationController::class, 'index']);
 
 // emite un nuevo token
