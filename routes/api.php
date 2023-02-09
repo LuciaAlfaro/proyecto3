@@ -9,6 +9,7 @@ use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\API\VehiculoController;
 use App\Http\Controllers\API\StationController;
 use App\Http\Controllers\API\TokenController;
+use App\Http\Controllers\API\AvatarController;
 
 use Psr\Http\Message\ServerRequestInterface;
 use Tqdev\PhpCrudApi\Api;
@@ -35,6 +36,8 @@ Route::apiResource('customers', CustomerController::class)->middleware('auth:san
 Route::apiResource('users', UserController::class);
 Route::apiResource('vehiculos', VehiculoController::class);
 Route::apiResource('orders', OrderController::class)->middleware('auth:sanctum');
+Route::post('/avatars', [AvatarController::class, 'store'])->middleware('auth:sanctum');
+Route::get('/avatars', [AvatarController::class, 'getAvatar'])->middleware('auth:sanctum');
 Route::get('stations', [StationController::class, 'index']);
 
 // emite un nuevo token
