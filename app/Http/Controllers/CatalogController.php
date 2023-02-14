@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-//use App\Models\Movie;
 
 use App\Models\Vehiculo;
 use Illuminate\Http\Request;
