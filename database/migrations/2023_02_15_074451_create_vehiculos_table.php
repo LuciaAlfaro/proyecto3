@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVehiclesTable extends Migration
+class CreateVehiculosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,14 +15,12 @@ class CreateVehiclesTable extends Migration
     {
         Schema::create('vehiculos', function (Blueprint $table) {
             $table->id();
-            $table->string('tipo');
-            $table->boolean('disponible');
+            $table->unsignedBigInteger('tipoVehiculo_id');
             $table->string('descripcion');
             $table->string('imagen');
-            $table->boolean('roto');
-            $table->string('desc_rotura');
-            $table->string('ult_reparacion');
+//            $table->unsignedBigInteger('disponible');
             $table->timestamps();
+            $table->foreign('tipoVehiculo_id')->references('id')->on('tipo_vehiculos');
         });
     }
 
