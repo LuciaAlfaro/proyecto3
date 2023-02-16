@@ -11,7 +11,6 @@ use App\Http\Controllers\API\TipoVehiculoController;
 use App\Http\Controllers\API\StationController;
 use App\Http\Controllers\API\TokenController;
 use App\Http\Controllers\API\AvatarController;
-
 use Psr\Http\Message\ServerRequestInterface;
 use Tqdev\PhpCrudApi\Api;
 use Tqdev\PhpCrudApi\Config\Config;
@@ -69,3 +68,4 @@ Route::any('/{any}', function (ServerRequestInterface $request) {
     return $response;
 
 })->where('any', '.*');
+
