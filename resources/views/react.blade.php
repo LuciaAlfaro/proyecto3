@@ -19,7 +19,6 @@
 
 <body><noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <p>Este documento hay que cambiarlo por nuestra landing page.</p>
 </body>
 
 </html>
