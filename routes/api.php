@@ -7,6 +7,7 @@ use App\Http\Controllers\API\CustomerController;
 use App\Http\Controllers\API\OrderController;
 use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\API\VehiculoController;
+use App\Http\Controllers\API\TipoVehiculoController;
 use App\Http\Controllers\API\StationController;
 use App\Http\Controllers\API\TokenController;
 use App\Http\Controllers\API\AvatarController;
@@ -34,6 +35,7 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 Route::apiResource('customers', CustomerController::class)->middleware('auth:sanctum');
 Route::apiResource('users', UserController::class);
 Route::apiResource('vehiculos', VehiculoController::class);
+Route::apiResource('tipoVehiculos', TipoVehiculoController::class);
 Route::apiResource('orders', OrderController::class)->middleware('auth:sanctum');
 Route::post('/avatars', [AvatarController::class, 'store'])->middleware('auth:sanctum');
 Route::get('/avatars', [AvatarController::class, 'getAvatar'])->middleware('auth:sanctum');
