@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
         Model::unguard();
         Schema::disableForeignKeyConstraints();
 
+        $this->call(TipoVehiculosTableSeeder::class);
         $this->call(VehiculosTableSeeder::class);
 
         DB::table('orders')->truncate();

@@ -9,10 +9,11 @@ class Vehiculo extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'id',
-        'tipo',
-        'descripcion',
-        'imagen'
-    ];
+        /**
+     * Devuelve el tipoVehiculo asociado a un order.
+     */
+    public function tipoVehiculo()
+    {
+        return $this->belongsTo(TipoVehiculo::class, 'tipoVehiculo_id');
+    }
 }

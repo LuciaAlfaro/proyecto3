@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVehiclesTypeTable extends Migration
+class CreateTipoVehiculosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateVehiclesTypeTable extends Migration
      */
     public function up()
     {
-        Schema::create('vehicles_type', function (Blueprint $table) {
+        Schema::create('tipo_vehiculos', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->float('precio');
+            $table->string('tipo_vehiculo')->default('bicicleta');
+            $table->unsignedDecimal('precio', $precision = 5, $scale = 2)->default(4.95);
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateVehiclesTypeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vehicles_type');
+        Schema::dropIfExists('tipo_vehiculos');
     }
 }
