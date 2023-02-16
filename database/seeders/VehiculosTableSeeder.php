@@ -39,7 +39,7 @@ class VehiculosTableSeeder extends Seeder
         $tipoVehiculos[1]->vehiculos()->saveMany([
             new Vehiculo([
                 'descripcion' => 'Patinete molón',
-                'imagen' => 'https://tuvalum.com/blog/wp-content/uploads/2017/08/bicicleta-suspensi%C3%B3n-delantera.jpg'
+                'imagen' => 'https://cocheselectricosninos.com/1219/patinete-electrico-citycoco-gold-60v-ataa-cars.jpg'
             ])
         ]
 
