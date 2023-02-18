@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 use App\Models\TipoVehiculo;
 use App\Models\Vehiculo;
+use App\Models\Station;
 
 class VehiculosTableSeeder extends Seeder
 {
@@ -23,15 +24,19 @@ class VehiculosTableSeeder extends Seeder
     private function seedVehiculos() {
         DB::table('vehiculos')->truncate();
         $tipoVehiculos = TipoVehiculo::all()->all();
+        $stations = Station::all()->all();
 
         $tipoVehiculos[0]->vehiculos()->saveMany([
             new Vehiculo([
                 'descripcion' => 'Una bici muy chula',
-                'imagen'      => 'https://m.media-amazon.com/images/I/812pjcUZTjS._AC_SL1500_.jpg'
+                'imagen'      => 'https://m.media-amazon.com/images/I/812pjcUZTjS._AC_SL1500_.jpg',
+                'station_id' => Station::all()->random()->id
             ]),
+
             new Vehiculo([
                 'descripcion' => 'Una bici amarilla',
-                'imagen' => 'https://tuvalum.com/blog/wp-content/uploads/2017/08/bicicleta-suspensi%C3%B3n-delantera.jpg'
+                'imagen' => 'https://tuvalum.com/blog/wp-content/uploads/2017/08/bicicleta-suspensi%C3%B3n-delantera.jpg',
+                'station_id' => Station::all()->random()->id
             ]),
         ]
         );
@@ -39,11 +44,12 @@ class VehiculosTableSeeder extends Seeder
         $tipoVehiculos[1]->vehiculos()->saveMany([
             new Vehiculo([
                 'descripcion' => 'Patinete molón',
-                'imagen' => 'https://cocheselectricosninos.com/1219/patinete-electrico-citycoco-gold-60v-ataa-cars.jpg'
+                'imagen' => 'https://cocheselectricosninos.com/1219/patinete-electrico-citycoco-gold-60v-ataa-cars.jpg',
+                'station_id' => Station::all()->random()->id
             ])
         ]
+    );
 
-            );
 
 /*         DB::table('vehiculos')->truncate();
         DB::table('vehiculos')->insert([

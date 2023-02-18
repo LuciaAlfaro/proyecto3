@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
         Schema::disableForeignKeyConstraints();
 
         $this->call(TipoVehiculosTableSeeder::class);
+        $this->call(StationsTableSeeder::class);
         $this->call(VehiculosTableSeeder::class);
 
         DB::table('orders')->truncate();
