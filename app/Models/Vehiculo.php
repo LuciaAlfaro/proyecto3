@@ -16,4 +16,8 @@ class Vehiculo extends Model
     {
         return $this->belongsTo(TipoVehiculo::class, 'tipoVehiculo_id');
     }
+    public function station()
+    {
+        return $this->belongsTo(Station::class, 'station_id');
+    }
 }
