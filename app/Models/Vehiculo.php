@@ -9,7 +9,15 @@ class Vehiculo extends Model
 {
     use HasFactory;
 
-        /**
+    protected $fillable = [
+        'id',
+        'tipoVehiculo_id',
+        'station_id',
+        'descripcion',
+        'imagen'
+    ];
+
+    /**
      * Devuelve el tipoVehiculo asociado a un order.
      */
     public function tipoVehiculo()

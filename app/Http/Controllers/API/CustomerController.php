@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use App\Http\Resources\CustomerResource;
+use App\Http\Controllers\MailController;
 
 class CustomerController extends Controller
 {
@@ -47,6 +48,10 @@ class CustomerController extends Controller
         unset($customerData['userId']);
 
         $customer = Customer::create($customerData);
+
+        //Envia un email cuando se crea un nuevo customer a partir de cualquier user ya creado
+        //no se pueden crear user nuevos
+        MailController::getMail();
 
         return new CustomerResource($customer);
     }

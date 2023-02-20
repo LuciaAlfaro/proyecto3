@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-use App\Mail\NewUserMail;
-use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
@@ -39,7 +37,6 @@ class UserController extends Controller
             return response()->json(["message"=>"Hubo un problema al registrar el usuario"]
             ,404);
         }
-        Mail::to('s.molano0818@gmail.com')->send(new NewUserMail());
         return response()->json([
             'usuario' => $usuario
         ], 200);
