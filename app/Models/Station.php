@@ -18,7 +18,7 @@ class Station extends Model
         'ciudad'
     ];
 
-            /**
+    /**
      * Devuelve los vehículos de una estacion determinada.
      */
     public function vehiculos()

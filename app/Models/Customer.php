@@ -34,4 +34,12 @@ class Customer extends Model
     {
         return $this->hasMany(Order::class, 'customer_id');
     }
+
+    /**
+     * Los vehiculos que tiene asignados un determinado customer.
+     */
+    public function vehiculos()
+    {
+        return $this->belongsToMany(Vehiculo::class, 'vehiculo_customer', 'vehiculo_id', 'customer_id');
+    }
 }
