@@ -17,8 +17,13 @@ class StationController extends Controller
      */
     public function index(Request $request)
     {
+        $busquedaFiltroCiudad = $request->input('filter');
+        if($busquedaFiltroCiudad && array_key_exists('ciudad', $busquedaFiltroCiudad)){
+            $contract=$busquedaFiltroCiudad['ciudad'];
+        } else {
         // Inicialmente, vamos a utilizar una estacion constante
         $contract = 'santander';
+        }
         // La key la cogeremos de las variables de entorno
         $key = "&apiKey=" . env("API_KEY");
         $urlJCDecauxAPI = "https://api.jcdecaux.com/vls/v1/stations?contract=" . $contract . $key;
