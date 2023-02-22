@@ -70,12 +70,8 @@ class User extends Authenticatable
 
     public function isContentAdmin()
     {
-        $roles = $this->roles;
-        $isContentAdmin = false;
+        $isContentAdmin = $this->roles()->where('name', 'Content_Admin')->count();
 
-        foreach ($roles as $role) {
-            if ($role->name === 'Content_Admin') $isContentAdmin = true;
-        }
-        return $isContentAdmin;
+        return $isContentAdmin > 0;
     }
 }
