@@ -49,6 +49,10 @@ class DatabaseSeeder extends Seeder
             'name' => 'Customer'
         ]);
 
+        $roleContentAdmin = Role::create([
+            'name' => 'Content_Admin'
+        ]);
+
         $userAdmin->roles()->attach($roleAdmin->id);
 
         $userCustomers = User::factory(10)

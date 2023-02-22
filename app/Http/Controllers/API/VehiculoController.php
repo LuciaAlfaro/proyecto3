@@ -9,6 +9,11 @@ use App\Http\Resources\VehiculoResource;
 
 class VehiculoController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->authorizeResource(Vehiculo::class, 'vehiculo');
+    }
     /**
      * Display a listing of the resource.
      *
