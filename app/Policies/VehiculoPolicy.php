@@ -41,11 +41,7 @@ class VehiculoPolicy
      */
     public function create(User $user)
     {
-        $autorizado = false;
-        if (($user->isAdmin() || $user->isContentAdmin())){
-            $autorizado = true;
-        }
-        return $autorizado;
+        return ($user->isAdmin() || $user->isContentAdmin());
     }
 
     /**
@@ -57,11 +53,7 @@ class VehiculoPolicy
      */
     public function update(User $user, Vehiculo $vehiculo)
     {
-        $autorizado = false;
-        if (($user->isAdmin() || $user->isContentAdmin())){
-            $autorizado = true;
-        }
-        return $autorizado;
+        return ($user->isAdmin() || $user->isContentAdmin());
     }
 
     /**
@@ -73,11 +65,7 @@ class VehiculoPolicy
      */
     public function delete(User $user, Vehiculo $vehiculo)
     {
-        $autorizado = false;
-        if (($user->isAdmin() || $user->isContentAdmin())){
-            $autorizado = true;
-        }
-        return $autorizado;
+        return ($user->isAdmin() || $user->isContentAdmin());
     }
 
     /**
@@ -89,11 +77,7 @@ class VehiculoPolicy
      */
     public function restore(User $user, Vehiculo $vehiculo)
     {
-        $autorizado = false;
-        if (($user->isAdmin() || $user->isContentAdmin())){
-            $autorizado = true;
-        }
-        return $autorizado;
+        return ($user->isAdmin() || $user->isContentAdmin());
     }
 
     /**
@@ -105,10 +89,6 @@ class VehiculoPolicy
      */
     public function forceDelete(User $user, Vehiculo $vehiculo)
     {
-        $autorizado = false;
-        if (($user->isAdmin() || $user->isContentAdmin())){
-            $autorizado = true;
-        }
-        return $autorizado;
+        return ($user->isAdmin() || $user->isContentAdmin());
     }
 }
