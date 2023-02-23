@@ -23,8 +23,6 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
-        $role = Role::findOrFail('2');
-
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -36,7 +34,11 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
-        $user->roles()->attach($role->id);
+
+        $user->afterCreated();
+
+//        $role = Role::where('name', 'Customer')->first();
+ //       $user->roles()->attach($role->id);
         event(new Registered($user));
 
         Auth::login($user);
