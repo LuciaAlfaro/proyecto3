@@ -9,6 +9,12 @@ use App\Http\Resources\TipoVehiculoResource;
 
 class TipoVehiculoController extends Controller
 {
+
+    public function __construct()
+    {
+        // $this->authorizeResource(TipoVehiculo::class, 'tipoVehiculos');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -46,6 +52,7 @@ class TipoVehiculoController extends Controller
      */
     public function show(TipoVehiculo $tipoVehiculo)
     {
+        $this->authorize('view',$tipoVehiculo);
         return new TipoVehiculoResource($tipoVehiculo);
     }
 
@@ -58,6 +65,7 @@ class TipoVehiculoController extends Controller
      */
     public function update(Request $request, TipoVehiculo $tipoVehiculo)
     {
+        $this->authorize('update',$tipoVehiculo);
         $tipoVehiculoData = json_decode($request->getContent(), true);
         $tipoVehiculo->update($tipoVehiculoData['data']['attributes']);
 
@@ -72,6 +80,7 @@ class TipoVehiculoController extends Controller
      */
     public function destroy(TipoVehiculo $tipoVehiculo)
     {
+        $this->authorize('delete',$tipoVehiculo);
         $tipoVehiculo->delete();
     }
 }

@@ -35,7 +35,9 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 Route::apiResource('customers', CustomerController::class)->middleware('auth:sanctum');
 Route::apiResource('users', UserController::class);
 Route::apiResource('vehiculos', VehiculoController::class)->middleware('auth:sanctum');
-Route::apiResource('tipoVehiculos', TipoVehiculoController::class);
+Route::apiResource('tipoVehiculos', TipoVehiculoController::class)->parameters([
+    'tipoVehiculos' => 'tipoVehiculo'
+])->middleware('auth:sanctum');
 Route::apiResource('orders', OrderController::class)->middleware('auth:sanctum');
 Route::post('/avatars', [AvatarController::class, 'store'])->middleware('auth:sanctum');
 Route::get('/avatars', [AvatarController::class, 'getAvatar'])->middleware('auth:sanctum');

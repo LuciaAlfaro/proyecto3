@@ -74,4 +74,10 @@ class User extends Authenticatable
 
         return $isContentAdmin > 0;
     }
+
+    public function afterCreated()
+        {
+            $role = Role::where('name', 'Customer')->first();
+            $this->roles()->attach($role->id);
+        }
 }
