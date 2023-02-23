@@ -30,7 +30,7 @@ class VehiculoPolicy
      */
     public function view(User $user, Vehiculo $vehiculo)
     {
-        return true;
+        return ($user->isAdmin() || $user->isContentAdmin());
     }
 
     /**

@@ -27,7 +27,6 @@ class StationController extends Controller
         // La key la cogeremos de las variables de entorno
         $key = "&apiKey=" . env("API_KEY");
         $urlJCDecauxAPI = "https://api.jcdecaux.com/vls/v1/stations?contract=" . $contract . $key;
-        // $queryString = "wskey=$key&query=who:\"$author\"";
         $urlConsulta = $urlJCDecauxAPI;
         // Consultamos a la API
         $response = Http::get($urlConsulta);
