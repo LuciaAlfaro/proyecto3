@@ -65,6 +65,16 @@ class DatabaseSeeder extends Seeder
             $userCustomer->roles()->attach($roleCustomer->id);
         }
 
+        $userContenadmins = User::factory(5)
+        ->has(Customer::factory()
+        ->has(Order::factory()->count(3))
+        ->count(1))
+        ->create();
+
+        foreach ($userContenadmins as $userContenadmin) {
+            $userContenadmin->roles()->attach($roleContentAdmin->id);
+        }
+
         Model::reguard();
 
         Schema::enableForeignKeyConstraints();
