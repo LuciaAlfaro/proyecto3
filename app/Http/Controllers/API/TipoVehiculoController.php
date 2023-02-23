@@ -5,7 +5,6 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\TipoVehiculo;
 use Illuminate\Http\Request;
-
 use App\Http\Resources\TipoVehiculoResource;
 
 class TipoVehiculoController extends Controller
@@ -15,9 +14,13 @@ class TipoVehiculoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return TipoVehiculoResource::collection(TipoVehiculo::paginate());
+        $numElementos = $request->input('numElements');
+
+        $registros = searchByField(array('tipo_vehiculo'), TipoVehiculo::class);
+
+        return TipoVehiculoResource::collection($registros->paginate($numElementos));
     }
 
     /**
