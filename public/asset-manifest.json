@@ -1,15 +1,21 @@
 {
   "files": {
-    "main.css": "/static/css/main.f5f14033.css",
-    "main.js": "/static/js/main.667cb845.js",
+    "main.css": "/static/css/main.064aef42.css",
+    "main.js": "/static/js/main.db630f99.js",
     "static/js/787.81f24527.chunk.js": "/static/js/787.81f24527.chunk.js",
+    "static/media/instagram.png": "/static/media/instagram.4fd306a7ef0dedb1235f.png",
+    "static/media/logoclaro.png": "/static/media/logoclaro.078d088aef44decec4cd.png",
+    "static/media/biciLeft.png": "/static/media/biciLeft.77509a2f717b5173ce17.png",
+    "static/media/twitter.png": "/static/media/twitter.93ac3f9a344ecd5d01a4.png",
+    "static/media/youtube.png": "/static/media/youtube.060528b6e83f2004078d.png",
+    "static/media/facebook.png": "/static/media/facebook.a5def58db1e9c1b38269.png",
     "index.html": "/index.html",
-    "main.f5f14033.css.map": "/static/css/main.f5f14033.css.map",
-    "main.667cb845.js.map": "/static/js/main.667cb845.js.map",
+    "main.064aef42.css.map": "/static/css/main.064aef42.css.map",
+    "main.db630f99.js.map": "/static/js/main.db630f99.js.map",
     "787.81f24527.chunk.js.map": "/static/js/787.81f24527.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f5f14033.css",
-    "static/js/main.667cb845.js"
+    "static/css/main.064aef42.css",
+    "static/js/main.db630f99.js"
   ]
 }
