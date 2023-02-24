@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\Station;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
-
 use App\Http\Resources\StationResource;
 
 class StationController extends Controller
@@ -17,7 +17,12 @@ class StationController extends Controller
      */
     public function index(Request $request)
     {
-        $busquedaFiltroCiudad = $request->input('filter');
+        $numElementos = $request->input('numElements');
+
+        $registros = searchByField(array('ciudad', 'nombre'), Station::class);
+
+        return StationResource::collection($registros->paginate($numElementos));
+/*         $busquedaFiltroCiudad = $request->input('filter');
         if($busquedaFiltroCiudad && array_key_exists('ciudad', $busquedaFiltroCiudad)){
             $contract=$busquedaFiltroCiudad['ciudad'];
         } else {
@@ -30,6 +35,34 @@ class StationController extends Controller
         $urlConsulta = $urlJCDecauxAPI;
         // Consultamos a la API
         $response = Http::get($urlConsulta);
-        return StationResource::collection($response->collect());
+        return StationResource::collection($response->collect()); */
+    }
+    public function show(Station $station)
+    {
+        return new StationResource($station);
+    }
+
+    public function store(Request $request)
+    {
+        {
+            $station = json_decode($request->getContent(), true);
+
+            $station = Station::create($station['data']['attributes']);
+
+            return new StationResource($station);
+        }
+    }
+
+    public function update(Request $request, Station $station)
+    {
+        $stationData = json_decode($request->getContent(), true);
+        $station->update($stationData['data']['attributes']);
+
+        return new StationResource($station);
+    }
+
+    public function destroy(Station $station)
+    {
+        $station->delete();
     }
 }

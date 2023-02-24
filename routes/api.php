@@ -38,12 +38,13 @@ Route::apiResource('vehiculos', VehiculoController::class)->middleware('auth:san
 Route::apiResource('tipoVehiculos', TipoVehiculoController::class)->parameters([
     'tipoVehiculos' => 'tipoVehiculo'
 ])->middleware('auth:sanctum');
+Route::apiResource('stations', StationController::class);
 Route::apiResource('orders', OrderController::class)->middleware('auth:sanctum');
 Route::post('/avatars', [AvatarController::class, 'store'])->middleware('auth:sanctum');
 Route::get('/avatars', [AvatarController::class, 'getAvatar'])->middleware('auth:sanctum');
 Route::get('/avatars/{userID}', [AvatarController::class, 'getAvatarbyId']);
 Route::get('/avatars/name/{userName}', [AvatarController::class, 'getAvatarByUserName']);
-Route::get('stations', [StationController::class, 'index']);
+//Route::get('stations', [StationController::class, 'index']);
 
 // emite un nuevo token
 Route::post('tokens', [TokenController::class, 'store']);
