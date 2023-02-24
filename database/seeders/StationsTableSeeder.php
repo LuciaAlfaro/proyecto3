@@ -16,26 +16,28 @@ class StationsTableSeeder extends Seeder
     public function run()
     {
         Station::truncate();
-
-        $contract = 'santander';
-
-        // La key la cogeremos de las variables de entorno
         $key = "&apiKey=" . env("API_KEY");
-        $urlJCDecauxAPI = "https://api.jcdecaux.com/vls/v1/stations?contract=" . $contract . $key;
-        $urlConsulta = $urlJCDecauxAPI;
-        // Consultamos a la API
-        $response = Http::get($urlConsulta);
+        $ciudades = ['santander', 'valence', 'seville', 'ljubljana'];
 
-        $estaciones = json_decode($response->collect());
+        foreach($ciudades as $ciudad){
 
-        foreach ($estaciones as $estacion) {
-            Station::insert([
-                'nombre' => $estacion->name,
-                'direccion' => $estacion->address,
-                'latitud' => $estacion->position->lat,
-                'longitud' => $estacion->position->lng,
-                'ciudad' => $estacion->contract_name
-            ]);
+            $urlJCDecauxAPI = "https://api.jcdecaux.com/vls/v1/stations?contract=" . $ciudad . $key;
+            $urlConsulta = $urlJCDecauxAPI;
+            // Consultamos a la API
+            $response = Http::get($urlConsulta);
+            $estaciones = json_decode($response->collect());
+
+            foreach ($estaciones as $estacion) {
+                Station::insert([
+                    'nombre' => $estacion->name,
+                    'direccion' => $estacion->address,
+                    'latitud' => $estacion->position->lat,
+                    'longitud' => $estacion->position->lng,
+                    'ciudad' => $estacion->contract_name
+                ]);
+
+            }
+
         }
     }
 }
