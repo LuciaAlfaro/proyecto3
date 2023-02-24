@@ -12,7 +12,7 @@ class TipoVehiculoController extends Controller
 
     public function __construct()
     {
-        // $this->authorizeResource(TipoVehiculo::class, 'tipoVehiculos');
+         $this->authorizeResource(TipoVehiculo::class, 'tipoVehiculo');
     }
 
     /**
@@ -37,8 +37,9 @@ class TipoVehiculoController extends Controller
      */
     public function store(Request $request)
     {
-        $tipoVehiculo = json_decode($request->getContent(), true);
 
+        $tipoVehiculo = json_decode($request->getContent(), true);
+//        $this->authorize('create',$tipoVehiculo);
         $tipoVehiculo = TipoVehiculo::create($tipoVehiculo['data']['attributes']);
 
         return new TipoVehiculoResource($tipoVehiculo);
