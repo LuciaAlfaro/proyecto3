@@ -10,6 +10,10 @@ use App\Http\Resources\StationResource;
 
 class StationController extends Controller
 {
+    public function __construct()
+    {
+         $this->authorizeResource(Station::class, 'station');
+    }
     /**
      * Display a listing of the resource.
      *
